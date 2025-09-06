@@ -1,0 +1,31 @@
+{
+  "name": "sara7aapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.7.0",
+    "crypto-js": "^4.2.0",
+    "cryptojs": "^2.5.3",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.2.1",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.18.0",
+    "mongoose": "^8.16.5",
+    "multer": "^2.0.2",
+    "nanoid": "^5.1.5",
+    "nodemailer": "^7.0.5",
+    "passport": "^0.7.0",
+    "passport-facebook": "^3.0.0"
+  }
+}
