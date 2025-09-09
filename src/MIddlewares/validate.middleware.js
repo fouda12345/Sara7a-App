@@ -86,11 +86,6 @@ export const generalFields = {
 			authorization: joi
 				.string()
 				.pattern(tokenRegex)
-				.messages({
-					'string.base': `"refreshToken" should be a type of 'text'`,
-					'string.empty': `"refreshToken" cannot be an empty field`,
-					'any.required': `"refreshToken" is a required field`
-				}),
 		}).unknown(true),
 	id: joi
 		.string()
@@ -175,6 +170,7 @@ export const generalFields = {
 }
 export const validate = (schema) => {
 	return (req, res, next) => {
+		
 		let ValidationError = {
 			name: "ValidationError",
 			isJoi: true,

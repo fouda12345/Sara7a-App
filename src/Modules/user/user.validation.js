@@ -64,19 +64,22 @@ export const uploadProfileImageSchema = {
 export const uploadCoverImageSchema = {
 	headers: generalFields.headerForAuthorization.required(),
 	files: joi
-		.array()
-		.items(
-			joi.object({
-				fieldname: generalFields.file.fieldname.valid("coverImages").required(),
-				originalname: generalFields.file.originalname.required(),
-				mimetype: generalFields.file.mimetype.valid(...fileValidation.image).required(),
-				encoding: generalFields.file.encoding.required(),
-				size: generalFields.file.size.max(5 * 1024 * 1024).required(),
-				destination: generalFields.file.destination.required(),
-				filename: generalFields.file.filename.required(),
-				path: generalFields.file.path.required(),
-				finalPath: generalFields.file.finalPath
-				// .required(),
-			}).required()
-		).min(1).max(5).required()
+			.array()
+			.items(
+				joi.object({
+					fieldname: generalFields.file.fieldname.valid("coverImages").required(),
+					originalname: generalFields.file.originalname.required(),
+					mimetype: generalFields.file.mimetype.valid(...fileValidation.image).required(),
+					encoding: generalFields.file.encoding.required(),
+					size: generalFields.file.size.max(5 * 1024 * 1024).required(),
+					destination: generalFields.file.destination.required(),
+					filename: generalFields.file.filename.required(),
+					path: generalFields.file.path.required(),
+					finalPath: generalFields.file.finalPath
+					// .required(),
+				}).required()
+			)
+			.min(1)
+			.max(5)
+			.required()
 }

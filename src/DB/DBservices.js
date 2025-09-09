@@ -44,3 +44,14 @@ export const findByIdAndDelete = async ({
 } = {}) => {
     return await model.findByIdAndDelete(id);
 }
+
+export const find = async ({
+    model ,
+    filter = {},
+    select = "",
+    populate = [],
+    skip = 0,
+    limit =100
+} = {}) => {
+    return await model.find(filter).skip(skip).limit(limit).select(select).populate(populate);
+}

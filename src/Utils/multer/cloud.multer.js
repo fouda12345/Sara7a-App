@@ -1,11 +1,11 @@
 import multer from "multer";
 import { cloudinaryConfig } from "./cloudinary.js";
 
-export const cloudFileUpload = ({ customPath = "general", fileTypes=[]}) => {
-  let basePath = `uploads/${customPath}`
-
+export const cloudFileUpload = ({fileTypes=[]}) => {
   const fileFilter = function (req, file, cb) {
+    req.body.attachments = []
     if (fileTypes?.includes(file?.mimetype)) {
+      req.body.attachments.push(file)
       cb(null, true);
     } else {
       cb(new Error('Invalid file type' , { cause: 400 }), false);
