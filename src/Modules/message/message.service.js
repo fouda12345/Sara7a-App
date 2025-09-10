@@ -38,7 +38,7 @@ export const sendMessage = async (req, res, next) => {
             recieverId,
             senderName: finalSenderName,
             content,
-            attachments
+            attachments : attachments.length && attachments
         }]
     })
     successResponse({ res, message: "Message sent successfully", data: { message }, statusCode: 201 });

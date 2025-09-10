@@ -124,13 +124,19 @@ const userSchema = new mongoose.Schema({
     timestamps : true,
     toJSON : {
         getters : true,
-        virtuals : false,
+        virtuals : true,
     },
     toObject : {
         getters : true,
-        virtuals : false,
+        virtuals : true,
     },
     methods : userMethods
+})
+
+userSchema.virtual("messages" , {
+    localField : "_id",
+    foreignField : "recieverId",
+    ref : "Message"
 })
 
 export const UserModel = mongoose.model("User" , userSchema);

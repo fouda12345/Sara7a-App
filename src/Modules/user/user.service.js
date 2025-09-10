@@ -2,14 +2,17 @@ import {Roles, UserModel} from "../../DB/Models/user/user.model.js";
 import * as DBservices from "../../DB/DBservices.js";
 import successResponse from "../../Utils/handlers/successResponse.utils.js";
 import { deleteFileCloudinary, uploadFileCloudinary } from "../../Utils/multer/cloud.multer.js";
+import path from "node:path";
 
 export const loadProfile = async (req , res , next) => {
-    const user = req.user;
+    let user = req.user;
     if (!user) return next(new Error("Invalid Credintals: please login again" , {cause : 401}));
     if (!user.confirmEmail)  {
         await user.sendEmailOTP();
         return next(new Error("Please confirm your email first" , {cause : 400}))
     };
+    user = await DBservices.findById({model: UserModel , id : user._id , select : "-password -__v -credentialsUpdatedAt -emailOTP -phoneOTP -passwordOTP" , populate:[{path: "messages"}]});
+    if (!user) return next(new Error("User not found" , {cause : 404}));
     successResponse({
         res,
         status : 200,
